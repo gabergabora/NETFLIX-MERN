@@ -1,13 +1,12 @@
-import React from "react";
-import "./List.scss";
 import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
-} from "@mui/icons-material";
-import ListItem from "../ListItem/ListItem";
+} from "@material-ui/icons";
 import { useRef, useState } from "react";
+import ListItem from "../listItem/ListItem";
+import "./list.scss";
 
-const List = () => {
+export default function List() {
   const [isMoved, setIsMoved] = useState(false);
   const [slideNumber, setSlideNumber] = useState(0);
 
@@ -53,5 +52,4 @@ const List = () => {
       </div>
     </div>
   );
-};
-export default List;
+}

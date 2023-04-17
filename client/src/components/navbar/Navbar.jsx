@@ -1,9 +1,6 @@
-import React from "react";
-import "./Navbar.scss";
-import Search from "@mui/icons-material/Search";
-import Notifications from "@mui/icons-material/Notifications";
-import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import { useState } from "react";
+import "./navbar.scss";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,7 +9,6 @@ const Navbar = () => {
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
-
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
@@ -27,13 +23,12 @@ const Navbar = () => {
           <span>New and Popular</span>
           <span>My List</span>
         </div>
-
         <div className="right">
           <Search className="icon" />
           <span>KID</span>
           <Notifications className="icon" />
           <img
-            src="https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             alt=""
           />
           <div className="profile">

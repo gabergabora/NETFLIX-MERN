@@ -1,8 +1,7 @@
-import React from "react";
-import "./Featured.scss";
-import { InfoOutlined, PlayArrow } from "@mui/icons-material";
+import { InfoOutlined, PlayArrow } from "@material-ui/icons";
+import "./featured.scss";
 
-const Featured = ({ type }) => {
+export default function Featured({ type }) {
   return (
     <div className="featured">
       {type && (
@@ -54,6 +53,4 @@ const Featured = ({ type }) => {
       </div>
     </div>
   );
-};
-
-export default Featured;
+}
