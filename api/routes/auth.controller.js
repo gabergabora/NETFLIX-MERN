@@ -1,6 +1,7 @@
 const User = require("../models/User");
 
 const CryptoJS = require("crypto-js");
+const jwt = require("jsonwebtoken");
 
 const registerUser = async (req, res) => {
   const { username, email, password } = req.body;
@@ -54,11 +55,19 @@ const loginUser = async (req, res) => {
         message: "Incorrect email or password",
       });
     } else {
+      //creating a jwt token for the user that has been found
+      const accessToken = jwt.sign(
+        { id: user._id, isAdmin: user.isAdmin },
+        process.env.SECRET_KEY_FOR_CRYPTOJS,
+        { expiresIn: "1d" }
+      );
+
+      //update the user with the token
+
+      const { password, ...info } = user._doc;
+
       //return status code along with user that has been found
-      res.status(200).json({
-        success: true,
-        user,
-      });
+      res.status(200).json({ ...info, accessToken });
     }
   } catch (error) {
     res.status(500).json({
