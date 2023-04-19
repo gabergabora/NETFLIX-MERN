@@ -32,14 +32,21 @@ const registerUser = async (req, res) => {
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    //find the user by email and password
-    const user = User.find({
-      email: email,
-      password: CryptoJS.AES.encrypt(
-        password,
+    //find the user by email and then match password
+    const user = await User.findOne({ email: email });
+
+    //if user is found then compare the password
+    if (user) {
+      const bytes = CryptoJS.AES.decrypt(
+        user.password,
         process.env.SECRET_KEY_FOR_CRYPTOJS
-      ).toString(),
-    });
+      );
+      const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
+
+      if (originalPassword !== password) {
+        user = null;
+      }
+    }
 
     if (!user) {
       return res.status(401).json({
@@ -47,9 +54,10 @@ const loginUser = async (req, res) => {
         message: "Incorrect email or password",
       });
     } else {
+      //return status code along with user that has been found
       res.status(200).json({
         success: true,
-        message: "Login successful",
+        user,
       });
     }
   } catch (error) {
