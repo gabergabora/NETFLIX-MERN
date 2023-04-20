@@ -93,4 +93,45 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-module.exports = { updateUser, deleteUser, getUser, getAllUsers };
+const getUserStats = async (req, res) => {
+  const today = new Date();
+  const lastYear = today.setFullYear(today.setFullYear() - 1);
+
+  const monthArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  try {
+    // here we are using mongodb aggregation to get the months and
+    // the total number of users registered in each month
+    const data = await User.aggregate([
+      {
+        $project: {
+          month: { $month: "$createdAt" }, // $month is a mongodb operator
+        },
+      },
+      {
+        $group: {
+          _id: "$month",
+          total: { $sum: 1 }, // $sum is a mongodb operator
+        },
+      },
+    ]);
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports = { updateUser, deleteUser, getUser, getAllUsers, getUserStats };
