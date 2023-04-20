@@ -67,4 +67,30 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { updateUser, deleteUser };
+const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const { password, ...info } = user._doc;
+    res.status(200).json(info);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+const getAllUsers = async (req, res) => {
+  // to get the query string from the url we use req.query
+  const query = req.query.new;
+
+  if (req.user.isAdmin === true) {
+    try {
+      const users = query
+        ? await User.find().sort({ _id: -1 }).limit(5)
+        : await User.find();
+      res.status(200).json(users);
+    } catch (err) {
+      res.status(500).json("You are not allowed to see all users! " + err);
+    }
+  }
+};
+
+module.exports = { updateUser, deleteUser, getUser, getAllUsers };
