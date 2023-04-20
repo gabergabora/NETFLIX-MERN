@@ -15,6 +15,26 @@ const createMovie = async (req, res) => {
   }
 };
 
+const updateMovie = async (req, res) => {
+  if (req.user.isAdmin) {
+    try {
+      const updatedMovie = await Movie.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: req.body,
+        },
+        { new: true }
+      );
+      res.status(200).json(updatedMovie);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  } else {
+    res.status(403).json("You are not allowed to update movies!");
+  }
+};
+
 module.exports = {
   createMovie,
+  updateMovie,
 };
