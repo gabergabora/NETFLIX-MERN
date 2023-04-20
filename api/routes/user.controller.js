@@ -41,4 +41,30 @@ const updateUser = async (req, res) => {
   }
 };
 
-module.exports = { updateUser };
+const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  if (req.user.id === id || req.user.isAdmin) {
+    try {
+      await User.findByIdAndDelete(id);
+
+      res.status(200).json({
+        success: true,
+        message: "User has been deleted successfully!",
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Internal server error",
+        errorMessage: error.message,
+      });
+    }
+  } else {
+    res.status(403).json({
+      success: false,
+      message: "You can delete only your account!",
+    });
+  }
+};
+
+module.exports = { updateUser, deleteUser };
