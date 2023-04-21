@@ -49,10 +49,37 @@ const deleteMovie = async (req, res) => {
 
 const getMovie = async (req, res) => {
   try {
+    // console.log(req.params.id);
     const movie = await Movie.findById(req.params.id);
     res.status(200).json(movie);
   } catch (error) {
     res.status(500).json(error);
+  }
+};
+
+const getAllMovies = async (req, res) => {
+  if (req.user.isAdmin) {
+    if (req.query.type) {
+      try {
+        const movies = await Movie.find({
+          genres: {
+            $in: [req.query.genre],
+          },
+        });
+        res.status(200).json(movies);
+      } catch (error) {
+        res.status(500).json(error);
+      }
+    } else {
+      try {
+        const movies = await Movie.find();
+        res.status(200).json(movies);
+      } catch (error) {
+        res.status(500).json(error);
+      }
+    }
+  } else {
+    res.status(403).json("You are not allowed to view movies!");
   }
 };
 
@@ -91,5 +118,6 @@ module.exports = {
   updateMovie,
   deleteMovie,
   getMovie,
+  getAllMovies,
   getRandomMovie,
 };
