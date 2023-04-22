@@ -5,6 +5,6 @@ const { createList, deleteList, getAllLists } = require("./list.controller");
 
 listRouter.post("/", verifyToken, createList);
 listRouter.delete("/:id", deleteList);
-listRouter.get("/", getAllLists);
+listRouter.get("/", verifyToken, getAllLists);
 
 module.exports = listRouter;

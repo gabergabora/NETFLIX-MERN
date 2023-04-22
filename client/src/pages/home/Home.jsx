@@ -15,10 +15,16 @@ const Home = ({ type }) => {
         const res = await axios.get(
           `http://localhost:5000/api/lists${type ? `?type=${type}` : ""}${
             genre ? `&genre=${genre}` : ""
-          }`
+          }`,
+          {
+            headers: {
+              token:
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDE0MWVmMzFkYzc1MWNjMjg3MTYxMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MjE3NzgzMSwiZXhwIjoxNjgyMjY0MjMxfQ._3tJPE9KI8jI7KYTS1RwHqiKXuYVIGPz9gB3oWiKGuA ",
+            },
+          }
         );
 
-        console.log(res);
+        // console.log(res);
         setLists(res.data);
       } catch (error) {
         console.log(error);
@@ -32,7 +38,7 @@ const Home = ({ type }) => {
       <Navbar />
       <Featured type={type} />
       {lists.map((list) => (
-        <List list={list} />
+        <List key={list._id} list={list} /> // Add key prop with a unique value, in this example assuming list._id is a unique identifier
       ))}
     </div>
   );
