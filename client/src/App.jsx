@@ -12,13 +12,16 @@ import Watch from "./pages/watch/Watch";
 import Login from "./pages/login/Login";
 
 const App = () => {
-  const user = false;
+  const user = true;
 
   return (
     <Router>
       <Routes>
         <Route exact path="/" element={user ? <Home /> : <Register />} />
-        <Route path="/register" element={!user ? <Register /> : <Home />} />
+        <Route
+          path="/register"
+          element={!user ? <Register /> : <Navigate to="/" />}
+        />
         <Route path="/login" element={user ? <Login /> : <Navigate to="/" />} />
         {user && (
           <>
