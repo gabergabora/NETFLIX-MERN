@@ -59,7 +59,7 @@ const loginUser = async (req, res) => {
       const accessToken = jwt.sign(
         { id: user._id, isAdmin: user.isAdmin },
         process.env.SECRET_KEY_FOR_CRYPTOJS,
-        { expiresIn: "1d" }
+        { expiresIn: "30d" }
       );
 
       //update the user with the token
