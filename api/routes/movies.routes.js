@@ -2,11 +2,11 @@ const movieRouter = require("express").Router();
 const verifyToken = require("../verifyToken");
 
 const {
-  createMovie,
   updateMovie,
   deleteMovie,
   getMovie,
   getRandomMovie,
+  createMovie,
   getAllMovies,
 } = require("./movie.controller");
 
