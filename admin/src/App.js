@@ -26,12 +26,8 @@ function App() {
       <div className="container">
         <Sidebar />
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={user ? <Navigate to="/login" /> : <Home />}
-          />
-          <Route exact path="/login" element={user ? <Login /> : <Login />} />
+          <Route path="/" element={user ? <Home /> : <Login />} />
+          <Route path="/login" element={user ? <Home /> : <Login />} />
           {user && (
             <>
               <Route path="/users" element={<UserList />} />

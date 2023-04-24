@@ -8,6 +8,7 @@ import {
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import YouTube from "react-youtube";
 
 export default function ListItem({ index, item }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -23,7 +24,7 @@ export default function ListItem({ index, item }) {
           {
             headers: {
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDE0MWVmMzFkYzc1MWNjMjg3MTYxMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MjE3NzgzMSwiZXhwIjoxNjgyMjY0MjMxfQ._3tJPE9KI8jI7KYTS1RwHqiKXuYVIGPz9gB3oWiKGuA ",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDE0MWVmMzFkYzc1MWNjMjg3MTYxMyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MjI2NDg0NywiZXhwIjoxNjg0ODU2ODQ3fQ.tSwm7Ts6jdv8ORP6YQrXw0SvCrLLA-UCmmjOQyyKVko",
             },
           }
         );
@@ -48,6 +49,12 @@ export default function ListItem({ index, item }) {
         <img src={movie.img} alt="" />
         {isHovered && (
           <>
+            {/* <div className="videoContainer">
+              <YouTube
+                videoId="UaVTIH8mujA"
+                opts={{ playerVars: { autoplay: 1 } }}
+              />
+            </div> */}
             <video src={movie.video} autoPlay={true} />
             <div className="itemInfo">
               <div className="icons">
