@@ -16,8 +16,6 @@ export default function Product() {
 
   console.log(movie);
 
-  console.log(movie);
-
   return (
     //here i will update the movie details
 
@@ -31,17 +29,25 @@ export default function Product() {
       <div className="productTop">
         <div className="productTopRight">
           <div className="productInfoTop">
-            <img
-              src="https://images.unsplash.com/photo-1616481558889-8b8b1b2b1b1a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-              alt=""
-              className="productInfoImg"
-            />
-            <span className="productName">Movie Name</span>
+            <img src={movie.img} alt="" className="productInfoImg" />
+            <span className="productName">{movie.title}</span>
           </div>
           <div className="productInfoBottom">
             <div className="productInfoItem">
               <span className="productInfoKey">id:</span>
-              <span className="productInfoValue">123</span>
+              <span className="productInfoValue">{movie._id}</span>
+            </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">Genre</span>
+              <span className="productInfoValue">{movie.genre}</span>
+            </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">Year</span>
+              <span className="productInfoValue">{movie.year}</span>
+            </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">Limit</span>
+              <span className="productInfoValue">{movie.limit}</span>
             </div>
           </div>
         </div>
@@ -49,27 +55,22 @@ export default function Product() {
       <div className="productBottom">
         <form className="productForm">
           <div className="productFormLeft">
-            <label>Movie Name</label>
-            <input type="text" placeholder="Movie Name" />
+            <label>Movie Title</label>
+            <input type="text" placeholder={movie.title} />
             <label>Year</label>
-            <input type="text" placeholder="Year" />
+            <input type="text" placeholder={movie.year} />
             <label>Genre</label>
-            <input type="text" placeholder="Genre" />
+            <input type="text" placeholder={movie.genre} />
             <label>Limit</label>
-            <input type="text" placeholder="Limit" />
-            <label>Is Series</label>
-            <select name="active" id="active" className="productSelect">
-              <option value="yes">Yes</option>
-              <option value="no">No</option>
-            </select>
+            <input type="text" placeholder={movie.limit} />
+            <label>Trailer</label>
+            <input type="file" placeholder={movie.trailer} />
+            <label>Video</label>
+            <input type="file" placeholder={movie.video} />
           </div>
           <div className="productFormRight">
             <div className="productUpload">
-              <img
-                src="https://images.unsplash.com/photo-1616481558889-8b8b1b2b1b1a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                alt=""
-                className="productUploadImg"
-              />
+              <img src={movie.img} alt="" className="productUploadImg" />
               <label for="file">
                 <Publish />
               </label>

@@ -11,7 +11,6 @@ import {
   updateMovie,
   deleteMovie,
 } from "../../context/movieContext/apiCalls";
-import { Delete } from "@material-ui/icons";
 
 export default function ProductList() {
   const { movies, dispatch } = useContext(MovieContext);
@@ -21,11 +20,7 @@ export default function ProductList() {
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    // setData(data.filter((item) => item.id !== id));
-  };
-
-  const handleUpdate = (item) => {
-    updateMovie(item.id, item, dispatch);
+    deleteMovie(id, dispatch);
   };
 
   const columns = [
