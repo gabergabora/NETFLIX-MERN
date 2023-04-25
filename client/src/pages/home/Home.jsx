@@ -36,7 +36,7 @@ const Home = ({ type }) => {
   return (
     <div className="home">
       <Navbar />
-      <Featured type={type} />
+      <Featured type={type} setGenre={setGenre} />
       {lists.map((list) => (
         <List key={list._id} list={list} /> // Add key prop with a unique value, in this example assuming list._id is a unique identifier
       ))}

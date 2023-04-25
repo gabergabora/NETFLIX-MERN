@@ -94,18 +94,10 @@ export default function Product() {
               <span className="productInfoValue">{movie._id}</span>
             </div>
             <div className="productInfoItem">
-              <span
-                className="productInfoKey
- "
-              >
-                :
-              </span>
+              <span className="productInfoKey">Genre:</span>
               <span className="productInfoValue">{movie.genre}</span>
             </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">type:</span>
-              <span className="productInfoValue">{movie.type}</span>
-            </div>
+
             <div className="productInfoItem">
               <span className="productInfoKey">year:</span>
               <span className="productInfoValue">{movie.year}</span>

@@ -1,17 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import "./newList.css";
 // import storage from "../../firebase";
-import { createMovie, getMovies } from "../../context/movieContext/apiCalls";
+import { getMovies } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { ListContext } from "../../context/listContext/ListContext";
 import { createList } from "../../context/listContext/apiCalls";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function NewList() {
   const [list, setList] = useState(null);
-  const history = useLocation;
-
-  console.log(history);
+  const location = useLocation();
+  const navigate = useNavigate(); // Get the navigate function from react-router-dom
 
   const { dispatch } = useContext(ListContext);
   const { movies, dispatch: dispatchMovie } = useContext(MovieContext);
@@ -30,10 +29,10 @@ export default function NewList() {
     setList({ ...list, [e.target.name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createList(list, dispatch);
-    history.push("/lists");
+    await createList(list, dispatch);
+    navigate("/lists"); // Use navigate function to navigate to "/lists"
   };
 
   return (

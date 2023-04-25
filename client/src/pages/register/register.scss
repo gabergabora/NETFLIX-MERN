@@ -24,13 +24,13 @@
 
       .loginButton {
         background-color: red;
+        cursor: pointer;
         border: none;
         color: white;
         border-radius: 5px;
         padding: 5px 15px;
         font-size: 16px;
         font-weight: 500;
-        cursor: pointer;
       }
     }
   }
@@ -87,4 +87,15 @@
       }
     }
   }
+}
+
+.register .top .wrapper .loginButton {
+  background-color: red;
+  cursor: pointer !important; /* Add !important to override other styles */
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 16px;
+  font-weight: 500;
 }

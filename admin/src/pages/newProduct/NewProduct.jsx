@@ -5,6 +5,7 @@ import storage from "../../firebase";
 import { createMovie } from "../../context/movieContext/apiCalls";
 import { useContext } from "react";
 import { MovieContext } from "../../context/movieContext/MovieContext";
+import { useNavigate } from "react-router-dom";
 
 export default function NewProduct() {
   const [movie, setMovie] = useState(null);
@@ -16,6 +17,8 @@ export default function NewProduct() {
   const [uploaded, setUploaded] = useState(0);
 
   const { dispatch } = useContext(MovieContext);
+
+  const Navigate = useNavigate();
 
   // const location = useLocation();
 
@@ -66,6 +69,7 @@ export default function NewProduct() {
     e.preventDefault();
 
     createMovie(movie, dispatch);
+    Navigate("/movies");
   };
 
   return (
