@@ -59,6 +59,7 @@ export default function Product() {
   };
 
   const handleUpload = (e) => {
+    console.log("upload");
     e.preventDefault();
     upload([
       { file: img, name: "img" },
