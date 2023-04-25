@@ -1,7 +1,10 @@
 import "./newProduct.css";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import storage from "../../firebase";
+import { createMovie } from "../../context/movieContext/apiCalls";
+import { useContext } from "react";
+import { MovieContext } from "../../context/movieContext/MovieContext";
 
 export default function NewProduct() {
   const [movie, setMovie] = useState(null);
@@ -12,7 +15,9 @@ export default function NewProduct() {
   const [video, setVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
 
-  const location = useLocation();
+  const { dispatch } = useContext(MovieContext);
+
+  // const location = useLocation();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -55,6 +60,12 @@ export default function NewProduct() {
       { file: trailer, name: "trailer" },
       { file: video, name: "video" },
     ]);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    createMovie(movie, dispatch);
   };
 
   return (
@@ -166,7 +177,9 @@ export default function NewProduct() {
           />
         </div>
         {uploaded === 5 ? (
-          <button className="addProductButton">Create</button>
+          <button className="addProductButton" onClick={handleSubmit}>
+            Create
+          </button>
         ) : (
           <button className="addProductButton" onClick={handleUpload}>
             Upload
