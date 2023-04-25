@@ -85,6 +85,17 @@
         font-size: 22px;
         cursor: pointer;
       }
+      .registerButton2 {
+        flex: 3;
+        height: 100%;
+        background-color: red;
+        border: none;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        //add a separater between the two buttons just by adding black border
+        border-left: 1px solid black;
+      }
     }
   }
 }

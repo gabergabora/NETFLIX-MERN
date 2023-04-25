@@ -58,20 +58,9 @@ export default function Register() {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          {/* <button className="loginButton" onClick={handleSignIn} type="submit">
-            Sign In
-          </button> */}
-          <Link to="/login">
-            <button
-              className="loginButton"
-              type="submit"
-              onClick={handleSignIn}
-            >
-              Sign In
-            </button>
-          </Link>
         </div>
       </div>
+
       <div className="container">
         <h1>Unlimited movies, TV shows, and more.</h1>
         <h2>Watch anywhere. Cancel anytime.</h2>
@@ -83,6 +72,9 @@ export default function Register() {
             <input type="email" placeholder="email address" ref={emailRef} />
             <button className="registerButton" onClick={handleStart}>
               Get Started
+            </button>
+            <button className="registerButton2" onClick={handleSignIn}>
+              Sign In
             </button>
           </div>
         ) : (
