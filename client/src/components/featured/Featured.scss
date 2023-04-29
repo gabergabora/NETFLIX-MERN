@@ -37,8 +37,13 @@
     display: flex;
     flex-direction: column;
 
+    .imgTitle {
+      width: 30%;
+      margin-right: 20px;
+    }
+
     img {
-      width: 400px;
+      width: 60vw;
     }
 
     .desc {

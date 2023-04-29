@@ -1,17 +1,29 @@
 import "./userList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { userRows } from "../../dummyData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 
 export default function UserList() {
-  const [data, setData] = useState(userRows);
+  //delete the user using axios and then refresh the page
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    const deleteUser = async () => {
+      try {
+        await axios.delete(`http://localhost:5000/api/users/${id}`, {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        });
+        window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    deleteUser();
   };
 
   const [newUsers, setNewUsers] = useState([]);
@@ -66,7 +78,7 @@ export default function UserList() {
             </Link>
             <DeleteOutline
               className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -80,7 +92,6 @@ export default function UserList() {
         rows={newUsers}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
         checkboxSelection
         getRowId={(r) => r._id}
       />

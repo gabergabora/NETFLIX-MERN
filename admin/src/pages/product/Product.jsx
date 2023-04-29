@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import "./product.css";
-import Chart from "../../components/chart/Chart";
-import { productData } from "../../dummyData";
 import { Publish } from "@material-ui/icons";
 import { useState } from "react";
 import { updateMovie, getMovie } from "../../context/movieContext/apiCalls";
 import { useContext } from "react";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import storage from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 import { useLocation } from "react-router-dom";
 
 export default function Product() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [movie, setMovie] = useState(location.state); // Changed from moviee to movie
+
+  // console.log(movie);
 
   const [img, setImg] = useState(null);
   const [imgTitle, setImgTitle] = useState(null);
@@ -73,6 +75,8 @@ export default function Product() {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateMovie(movie._id, movie, dispatch);
+    // Navigate("/movies");
+    navigate("/movies");
   };
 
   return (
@@ -145,12 +149,14 @@ export default function Product() {
             <input
               type="file"
               name="trailer"
+              src={movie.trailer}
               onChange={(e) => setTrailer(e.target.files[0])}
             />
             <label>Movie Video</label>
             <input
               type="file"
               name="video"
+              src={movie.video}
               onChange={(e) => setVideo(e.target.files[0])}
             />
           </div>
@@ -162,6 +168,7 @@ export default function Product() {
               </label>
               <input
                 type="file"
+                src={movie.img}
                 id="img"
                 style={{ display: "none" }}
                 name="img"
@@ -175,6 +182,7 @@ export default function Product() {
               </label>
               <input
                 type="file"
+                src={movie.imgTitle}
                 id="imgTitle"
                 style={{ display: "none" }}
                 name="imgTitle"
@@ -188,19 +196,23 @@ export default function Product() {
               </label>
               <input
                 type="file"
+                src={movie.imgSm}
                 id="imgSm"
                 style={{ display: "none" }}
                 name="imgSm"
                 onChange={(e) => setImgSm(e.target.files[0])}
               />
             </div>
+            <button className="productButton" onClick={handleSubmit}>
+              Update
+            </button>
             {uploaded === 5 ? (
-              <button className="productButton" onClick={handleSubmit}>
-                Update
+              <button className="productButton" onClick={handleUpload}>
+                Upload
               </button>
             ) : (
-              <button className="productButton" onClick={handleUpload} disabled>
-                Update and Upload
+              <button className="productButton" onClick={handleUpload}>
+                Uploading...
               </button>
             )}
           </div>

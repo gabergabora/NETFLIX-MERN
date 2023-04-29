@@ -5,11 +5,11 @@ import { getMovies } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { ListContext } from "../../context/listContext/ListContext";
 import { createList } from "../../context/listContext/apiCalls";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function NewList() {
   const [list, setList] = useState(null);
-  const location = useLocation();
+
   const navigate = useNavigate(); // Get the navigate function from react-router-dom
 
   const { dispatch } = useContext(ListContext);

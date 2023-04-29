@@ -50,7 +50,14 @@ export default function ProductList() {
         return (
           <>
             <Link to={"/product/" + params.row._id} state={params.row}>
-              <button className="productListEdit">Edit</button>
+              <button
+                className="productListEdit"
+                onClick={() =>
+                  dispatch({ type: "UPDATE_MOVIE_START", payload: params.row })
+                }
+              >
+                Edit
+              </button>
             </Link>
             <DeleteOutline
               className="productListDelete"
@@ -68,7 +75,6 @@ export default function ProductList() {
         rows={movies}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
         checkboxSelection
         getRowId={(r) => r._id}
       />
