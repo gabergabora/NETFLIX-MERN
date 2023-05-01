@@ -1,6 +1,7 @@
 .featured {
   height: 90vh;
   position: relative;
+  padding-bottom: 20px;
 
   .category {
     position: absolute;
@@ -35,6 +36,8 @@
     bottom: 100px;
     color: white;
     display: flex;
+    flex-direction: column; /* This property is highlighted */
+    display: flex;
     flex-direction: column;
 
     .imgTitle {
@@ -43,11 +46,12 @@
     }
 
     img {
-      width: 60vw;
+      width: 50vw;
     }
 
     .desc {
       margin: 20px 0px;
+      font-weight: 500;
     }
 
     .buttons {
