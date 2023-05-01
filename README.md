@@ -64,7 +64,7 @@ export default storage;
 - NodeJs/ExpressJs: For creating REST APIS and handling database 
 - JWT: For authentication and authorization of users/admins
 - MongoDB: For performing CRUD operations on Movies/Series/List and storing documents of Users/Movies/List
-- Firebase: For uploading images and video and 
+- Firebase: For uploading images and videos for each movie/series
 - Postman: For API testing 
 
 ## 🚀 Demo 
