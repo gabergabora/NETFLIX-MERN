@@ -6,7 +6,6 @@ A Netlfix clone where Users can get authenticated to watch Movies, Series of the
 
 ## 🚀 Architecture Diagram
 ![Netflix Mern](https://user-images.githubusercontent.com/104893311/235288616-09f182c1-4a09-4985-8726-dd3058de095f.png)
-
 ## 🚀Getting Started
 
 - In the terminal, run: ```https://github.com/Syed007Hassan/NETFLIX-MERN.git```
@@ -54,16 +53,25 @@ export default storage;
 
 - Client(Netflix) will be available on ```http://localhost:3000/``` and Admin(Neflix Panel) will be available on ```http://localhost:3001/```
 
+## 🚀 API Testing-Postman
+
+![image](https://user-images.githubusercontent.com/104893311/235492798-781202e6-e6bd-4d20-9694-ce2e909aa65c.png)
+
 ## 🚀 Technologies used 
+
 - ReactJS: For client (Netflix) and admin (Netflix Admin Panel)
 - CSS/SCSS: For styling components
-- NodeJs: For creating REST APIS and handling database 
+- NodeJs/ExpressJs: For creating REST APIS and handling database 
 - JWT: For authentication and authorization of users/admins
 - MongoDB: For performing CRUD operations on Movies/Series/List and storing documents of Users/Movies/List
 - Firebase: For uploading images and video and 
+- Postman: For API testing 
 
 ## 🚀 Demo 
-https://user-images.githubusercontent.com/104893311/235488580-bc574b3c-7097-485a-9f4f-c7e8b78d61bf.mp4
+
+https://user-images.githubusercontent.com/104893311/235492206-d578d0e4-9584-442f-a01e-b6a9e97dc4f4.mp4
+
+
 
 
 
