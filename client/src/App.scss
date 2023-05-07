@@ -13,16 +13,14 @@
   }
 }
 
-// add margin to the bottom of the page
+@mixin tablet {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
 
-// @mixin tablet {
-//   @media (max-width: 768px) {
-//     @content;
-//   }
-// }
-
-// @mixin mobile {
-//   @media (max-width: 425px) {
-//     @content;
-//   }
-// }
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}

@@ -9,7 +9,7 @@ export default function Watch() {
   // console.log(movie);
 
   return (
-    <div className="watch">
+    <div className="watch videocontainer">
       <Link to="/">
         <div className="back">
           <ArrowBackOutlined />
